@@ -1,0 +1,393 @@
+/* ========================================================
+   FinPulse — Design System & Stylesheet
+   Intentional Bugs:
+     - Bug #8: 'backgroud-color' typo in .stat-badge.income and missing unit
+   ======================================================== */
+
+:root {
+    --bg-dark: #080b11;
+    --card-bg: rgba(18, 24, 38, 0.7);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --primary: #6366f1;
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    --green-accent: #10b981;
+    --red-accent: #f43f5e;
+    --cyan-accent: #06b6d4;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.app-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.glass-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.app-header {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    font-size: 2rem;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.brand-title span {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--card-border);
+}
+
+.status-pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+}
+
+.status-pill.online .dot {
+    background: var(--green-accent);
+    box-shadow: 0 0 8px var(--green-accent);
+}
+
+.btn {
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+}
+
+/* Stats Row */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.stat-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stat-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* BUG #8 (Intentional CSS Typo): 'backgroud-color' instead of 'background-color' and missing unit */
+.stat-badge.income {
+    backgroud-color: rgba(16, 185, 129, 0.2);
+    color: var(--green-accent);
+    margin-right: 4;
+}
+
+.stat-badge.expense {
+    background-color: rgba(244, 63, 94, 0.2);
+    color: var(--red-accent);
+}
+
+.stat-badge.rate {
+    background-color: rgba(6, 182, 212, 0.2);
+    color: var(--cyan-accent);
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+}
+
+.text-green { color: var(--green-accent); }
+.text-red { color: var(--red-accent); }
+.text-cyan { color: var(--cyan-accent); }
+
+/* Table */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.section-title h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.count-pill {
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 8px;
+    color: var(--text-muted);
+}
+
+.transaction-table {
+    overflow: hidden;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr 1fr 60px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--card-border);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr 1fr 60px;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+.table-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.col-title { font-weight: 600; }
+.col-cat {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    width: fit-content;
+}
+
+.col-date {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.col-amount {
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.col-amount.income { color: var(--green-accent); }
+.col-amount.expense { color: var(--red-accent); }
+
+.btn-del {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+.btn-del:hover {
+    color: var(--red-accent);
+    background: rgba(244, 63, 94, 0.15);
+}
+
+/* Modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 480px;
+    padding: 26px;
+    background: #0f172a;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.form-item label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.form-item input,
+.form-item select {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--card-border);
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .table-header, .table-row {
+        grid-template-columns: 1.5fr 1fr 1fr 40px;
+    }
+    .col-date { display: none; }
+}
